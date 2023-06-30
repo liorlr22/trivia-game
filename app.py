@@ -67,7 +67,8 @@ def login():
 
         # Check if the user exists in the database
         user = None
-        users = db_ref.order_by_child('email').equal_to(email_or_username).get()
+        users = db_ref.order_by_child('email').equal_to(email_or_username).get() or \
+                db_ref.order_by_child('username').equal_to(email_or_username).get()
         if users:
             for key, value in users.items():
                 if value['password'] == password:
@@ -96,6 +97,7 @@ def game():
     user_id = session['user_id']
     ref = db.reference('users/' + user_id)
     profile_picture_url = ref.child('profile_picture').get()
+    # TODO: handle pfp and show it
 
     return render_template('game.html', profile_picture_url=profile_picture_url)
 
