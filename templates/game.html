@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="{{ profile_picture_url }}" alt="Profile Picture" class="profile-picture">
+            </div>
+            <div class="navbar-actions">
+                <button id="disconnect-btn">Disconnect</button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1>Welcome to the Dashboard</h1>
+            <!-- Dashboard content here -->
+        </div>
+
+        <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    </body>
+
+</html>
