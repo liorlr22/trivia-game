@@ -34,9 +34,10 @@ def signup():
         profile_picture = request.files['profile-picture']
 
         # Check if the email already exists in the database
-        existing_user = db_ref.order_by_child('email').equal_to(email).get()
+        existing_user = db_ref.order_by_child('email').equal_to(email).get() or \
+                        db_ref.order_by_child('username').equal_to(username).get()
         if existing_user:
-            return "<script>alert('Email already exists. Please use a different email.'); " \
+            return "<script>alert('Email or username already exists. Please try again.'); " \
                    "window.location.href='/signup';</script> "
 
         # Save profile picture to Firebase Storage
